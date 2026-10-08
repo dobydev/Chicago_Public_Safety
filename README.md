@@ -428,5 +428,5 @@ Possible engineering improvements include:
 
 **Gabriel Doby**
 
-Data Engineering Project  
+Data Engineering Capstone Project  
 Western Governors University
