@@ -1,28 +1,19 @@
-# Chicago Crime and Arrest Outcome Analysis
+# Chicago Public Safety ETL Pipeline
 
-This project analyzes reported crimes in Chicago to examine how crime type, police district, and time of occurrence are associated with the likelihood of an arrest.
+This project is a data engineering pipeline built around the City of Chicago Crimes - 2001 to Present dataset.
 
-The project was completed as part of the WGU M.S. Data Analytics - Data Engineering Capstone.
-
-## Research Question
-
-How do crime type, geographic location, and time of occurrence affect the likelihood of an arrest for reported crimes in Chicago?
+The pipeline extracts 2025 Chicago crime records from the City of Chicago Open Data API, profiles and validates the raw data, transforms the fields needed for downstream use, and loads the prepared dataset into PostgreSQL.
 
 ## Project Overview
 
-The project uses crime records from the City of Chicago Crimes - 2001 to Present dataset.
+The ETL workflow follows four main stages:
 
-For this analysis, the dataset was limited to crimes reported during 2025. The data was collected directly from the City of Chicago Open Data API using Python.
+1. Extract crime records from the City of Chicago API
+2. Profile and validate the raw dataset
+3. Transform the data into an analysis-ready structure
+4. Load the transformed records into PostgreSQL
 
-The workflow includes:
-
-1. Extracting crime data from the City of Chicago API
-2. Profiling the raw dataset
-3. Selecting and transforming the fields needed for analysis
-4. Loading the transformed data into PostgreSQL
-5. Performing descriptive analysis
-6. Running a binary logistic regression
-7. Interpreting arrest patterns by crime type, district, and time
+The pipeline processed 238,110 crime records from 2025.
 
 ## Data Source
 
@@ -31,29 +22,28 @@ Crimes - 2001 to Present
 
 https://data.cityofchicago.org/Public-Safety/Crimes-2001-to-Present/ijzp-q8t2/about_data
 
-## Dataset
-
-The extraction process retrieved:
-
-- 238,110 crime records
-- 22 original source fields
-- Crimes occurring between January 1 and December 31, 2025
-
-The API extraction used pagination in batches of up to 50,000 records and ordered results by the unique `id` field. :chatgpt-content-reference{index="0"}
-
-## Project Structure
+## ETL Workflow
 
 ```text
-chicago-public-safety-capstone/
-│
-├── extract.py
-├── profile.py
-├── transform.py
-├── load.py
-├── data_analysis.py
-│
-├── chicago_crimes_raw.csv
-├── chicago_crimes_transformed.csv
-├── logistic_regression_results.csv
-│
-└── README.md
+City of Chicago Open Data API
+            |
+            v
+        extract.py
+            |
+            v
+ chicago_crimes_raw.csv
+            |
+            v
+        profile.py
+            |
+            v
+       transform.py
+            |
+            v
+chicago_crimes_transformed.csv
+            |
+            v
+         load.py
+            |
+            v
+       PostgreSQL
