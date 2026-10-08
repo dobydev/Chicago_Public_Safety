@@ -65,7 +65,7 @@ chicago-public-safety-capstone/
 └── transform.py
 ```
 
-Generated CSV files and database credentials are not required to be stored in the repository.
+Generated CSV files and database credentials are not stored in this repository
 
 ---
 
@@ -252,8 +252,6 @@ The completed load contains:
 ## Database Connection
 
 `load.py` imports the PostgreSQL connection from a local `db.py` file.
-
-Database credentials should **not** be committed to GitHub.
 
 Example local configuration:
 
